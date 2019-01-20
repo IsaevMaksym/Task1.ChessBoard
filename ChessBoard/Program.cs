@@ -12,8 +12,10 @@ namespace Chess
     {
         static void Main(string[] args)
         {
+
             IController controller = new Controller();
-            controller.Run(args);            
+            controller.Run(args);
+            Console.ReadKey();
         }
     }
 }

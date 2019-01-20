@@ -14,13 +14,13 @@ namespace ChessController
         const string ERROR_MESSEGE = "Can't validate data. Please try again";
 
         private readonly IVIewer _viewer;
-        private IChessBoard _chessBoard;
+        private IChessBoard _chessBoard;        
         private uint _boardLength;
         private uint _boardWidth;
 
         public Controller()
             : this(new ConsoleIO(), new ChessBoard())
-        {          
+        {
         }
 
         public Controller(IVIewer viewer, IChessBoard chessBoard)
@@ -38,7 +38,7 @@ namespace ChessController
             else if (ArgsValidator.ValidateArgs(args, out _boardLength, out _boardWidth))
             {
                 _chessBoard.CreateField(_boardLength, _boardWidth);
-                _viewer.ShowGameField(_chessBoard.GetChessBoolField(), _boardWidth);
+                _viewer.ShowGameField(_chessBoard);
             }
             else
             {

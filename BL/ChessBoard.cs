@@ -10,17 +10,33 @@ namespace BL
     {
         private ChessCell[] _board;
 
-        void IChessBoard.CreateField(uint boardLength, uint boardWidth)
+        ChessCell IChessBoard.this[int index]
+        {
+            get
+            {
+                return _board[index];
+            }
+        }             
+
+        int IChessBoard.GetLength
+        {
+            get
+            {
+                return _board.Length;
+            }
+        }
+
+        void IChessBoard.CreateField(uint boardLength, uint boardHeigh)
         {
             bool isAsterist = true;
 
-            _board = new ChessCell[boardLength * boardWidth];
+            _board = new ChessCell[boardLength * boardHeigh];
 
             uint k = 0;
 
             for (uint i = 0; i < boardLength; i++)
             {
-                for (uint j = 0; j < boardWidth; j++)
+                for (uint j = 0; j < boardHeigh; j++)
                 {
                     _board[k] = new ChessCell(isAsterist, i, j);
                     k++;
@@ -29,19 +45,7 @@ namespace BL
             }
 
         }
-
-        bool[] IChessBoard.GetChessBoolField()
-        {
-            bool[] gameField = new bool[_board.Length];
-
-            for (int i = 0; i < gameField.Length; i++)
-            {
-                gameField[i] = _board[i].IsAsterisk;
-            }
-
-            return gameField;
-        }
-
+                
     }
 }
 

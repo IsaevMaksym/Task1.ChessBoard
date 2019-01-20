@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using BL;
 
 namespace ChessView
 {
@@ -23,7 +23,7 @@ namespace ChessView
             for (int i = 0; i < Heigh; i++)
             {
                 for (int j = 0; j < Width; j++)
-                {                    
+                {
                     if (chessBoard[i + j])
                     {
                         Console.Write(BLACK_CELL);
@@ -32,12 +32,32 @@ namespace ChessView
                     {
                         Console.Write(WHITE_CELL);
                     }
-                  
+
                 }
                 Console.CursorTop--;
-                Console.CursorLeft=0;
+                Console.CursorLeft = 0;
             }
 
+        }
+
+        public void ShowGameField(IChessBoard board)
+        {
+            int Heigh = (int)board[board.GetLength - 1].YCord;
+            int Width = (int)board[board.GetLength - 1].XCord;
+
+            Console.SetCursorPosition(0, Heigh);
+
+            for (int i = 0; i < Heigh; i++)
+            {
+                for (int j = 0; j < Width; j++)
+                {
+                    Console.Write(board[i + j].ToString());
+                }
+                Console.CursorTop--;
+                Console.CursorLeft = 0;
+            }
+
+            Console.SetCursorPosition(0, Heigh++);
         }
 
         public void ShowMessege(string s)

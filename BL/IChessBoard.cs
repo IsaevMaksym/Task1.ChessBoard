@@ -10,8 +10,9 @@ namespace BL
     {
         void CreateField(uint boardLength, uint boardWidth);
 
-        bool[] GetChessBoolField();
+        ChessCell this[int index] { get; }
 
-       
+        int GetLength { get; }
     }
 }
+
